@@ -1,11 +1,5 @@
-def add_numb(name):
-       print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    add_numb('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
-
-
+def add_numb(x):
+    a = x + 2
+    return a
+y = add_numb(2)
+print (y)
