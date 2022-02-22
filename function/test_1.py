@@ -1,5 +1,5 @@
 import unittest
-from main import add_numb
+from function.main import add_numb
 
 class MyTestCase(unittest.TestCase):
     def test_something(self):
