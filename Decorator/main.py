@@ -4,7 +4,7 @@ def decator(func):
     def wrapper(*args, **kwargs):
         #*args, **kwargs Переменное количество аргументов
         res = func(*args, **kwargs) + 100
-        #Действие декоратора, пребовляет 100
+        #Действие декоратора, прибавляет 100
         return res
 
     return wrapper
@@ -13,7 +13,7 @@ def plus(func):
     def wrapper(*args, **kwargs):
         #*args, **kwargs Переменное количество аргументов
         res = func(*args, **kwargs) + 200
-        #Действие декоратора, пребовляет 200
+        #Действие декоратора, прибавляет 200
         return res
 
     return wrapper
