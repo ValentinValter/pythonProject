@@ -1,7 +1,6 @@
 """Декоратор - это функция, которая позволяет обернуть другую функцию
 для расширения её функциональности без непосредственного изменения её кода."""
 def decator(func):
-
     def wrapper(*args, **kwargs):
         #*args, **kwargs Переменное количество аргументов
         res = func(*args, **kwargs) + 100
@@ -11,7 +10,6 @@ def decator(func):
     return wrapper
 
 def plus(func):
-
     def wrapper(*args, **kwargs):
         #*args, **kwargs Переменное количество аргументов
         res = func(*args, **kwargs) + 200
