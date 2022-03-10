@@ -7,7 +7,7 @@ from unittest.mock import patch
 class MyTestCase(unittest.TestCase):
     # Patch заменяет результат функции fn на mock_fn.return_value = 7
     # Обязательно указывать полный путь.
-    @patch("RequestsGetJson.main.fn")
+    @patch("RequestsGetJsonMock.main.fn")
     def test_something(self, mock_fn):
         mock_fn.return_value = 7
         y = fn()
