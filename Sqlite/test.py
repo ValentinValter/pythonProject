@@ -45,6 +45,8 @@ class MyTestCase(unittest.TestCase):
         # изменяем данные в таблице
         cur = sq_connction.cursor()
         cur.execute("""UPDATE users SET price = 199 WHERE name = 'Kirpich'""")
+        # Сохраняем в базе данных
+        sq_connction.commit()
 
         # Выбор нужных полей из таблицы
         sq_select = """SELECT price from users WHERE rowid = 1"""
