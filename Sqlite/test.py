@@ -1,5 +1,6 @@
-import unittest
 import sqlite3 as sq
+import unittest
+
 
 class MyTestCase(unittest.TestCase):
     def test_something(self):
