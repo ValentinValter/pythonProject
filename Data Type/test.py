@@ -36,7 +36,8 @@ class MyTestCase(unittest.TestCase):
         self.assertTrue(b)  # add assertion here
 
     def test_something4(self):
-        """Тип данных: Кортеж (Tuple) """
+        """Тип данных: Кортеж (Tuple)
+         это те же списки за одним исключением. Кортежи неизменяемые структуры данных"""
 
         list_keys = [10, 20, 'asdf']
         tuple1 = tuple(list_keys)
