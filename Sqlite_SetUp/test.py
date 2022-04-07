@@ -17,6 +17,35 @@ def select(x, y):
 
 
 class MyTestCase(unittest.TestCase):
+    """Методы setUp() и tearDown() позволяют определять инструкции,
+    выполняемые перед и после каждого теста, соответственно."""
+
+    def setUp(self) -> None:
+        # Подключаемся к базе данных sqlite
+        sq_connction = sq.connect('users.db')
+        cursor = sq_connction.cursor()
+
+        # создаем таблицу
+        cursor.execute("""CREATE TABLE users (
+            name TEXT,
+            price INTEGER)""")
+
+        # Добавляем данные в таблицу
+        cursor.execute("""INSERT INTO users VALUES("Kirpich", 500)""")
+
+        # Сохраняем в базе данных
+        sq_connction.commit()
+
+    def tearDown(self) -> None:
+        # Подключаемся к базе данных sqlite
+        sq_connction = sq.connect('users.db')
+        cursor = sq_connction.cursor()
+
+        # Удаляем все данные в таблице
+        cursor.execute("""DROP TABLE users""")
+        # Сохраняем в базе данных
+        sq_connction.commit()
+
     def test_something(self):
         # Выбор нужных полей из таблицы
         y = select("name", "LIMIT 1")
@@ -37,13 +66,7 @@ class MyTestCase(unittest.TestCase):
         # Выбор нужных полей из таблицы
         y = select("*", "WHERE name = 'Brus'")
         # Проверяем добавление новых данных в таблицу
-        self.assertEqual(y, [('Brus', '16000')])  # add assertion here
-
-        # Удаляем данные в таблице
-        cur = sq_connction.cursor()
-        cur.execute("""DELETE FROM users WHERE name = 'Brus' """)
-        # Сохраняем в базе данных
-        sq_connction.commit()
+        self.assertEqual(y, [('Brus', 16000)])  # add assertion here
 
     def test_something2(self):
         # Подключаемся к базе данных sqlite
@@ -59,13 +82,7 @@ class MyTestCase(unittest.TestCase):
         y = select("price", "WHERE name = 'Kirpich'")
 
         # Проверяем изменения в таблице
-        self.assertEqual(y, [('199',)])  # add assertion here
-
-        # изменяем данные в таблице
-        cur = sq_connction.cursor()
-        cur.execute("""UPDATE users SET price = 500 WHERE name = 'Kirpich'""")
-        # Сохраняем в базе данных
-        sq_connction.commit()
+        self.assertEqual(y, [(199,)])  # add assertion here
 
     def test_something3(self):
         # Подключаемся к базе данных sqlite
