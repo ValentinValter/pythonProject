@@ -17,6 +17,9 @@ def select(x, y):
 
 
 class MyTestCase(unittest.TestCase):
+    """Методы setUp() и tearDown() позволяют определять инструкции,
+    выполняемые перед и после каждого теста, соответственно."""
+
     def setUp(self) -> None:
         # Подключаемся к базе данных sqlite
         sq_connction = sq.connect('users.db')
